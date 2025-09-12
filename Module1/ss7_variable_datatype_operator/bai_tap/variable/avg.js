@@ -17,7 +17,7 @@ function checkInput1() {
     return true;
 }
 function calculateAverage() {
-    if (!checkInput()) {
+    if (!checkInput1()) {
         return;
     }
     let num1 = parseFloat(document.getElementById("num1").value);

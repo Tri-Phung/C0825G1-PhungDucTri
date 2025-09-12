@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bai 1</h1>
+    <p>Check if a is divisible by b</p>
+    <table>
+        <tr>
+            <td>
+                <p>Input number a</p>
+            </td>
+            <td><input type="text" id="inputA"></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input number b</p>
+            </td>
+            <td><input type="text" id="inputB"></td>
+        </tr>
+    </table>
+    <button onclick="checkIfDivisible()">Check</button>
+    <p id="output1"></p>
+    <h1>Bai 2</h1>
+    <p>Check if the age is enough for grade 10</p>
+    <p>Input age:</p>
+    <input type="text" id="inputAge">
+    <button onclick="checkIfAgeEnough()">Check</button>
+    <p id="output2"></p>
+    <h1>Bai 3</h1>
+    <p>Check if an integer is greater or less than 0 or equal 0</p>
+    <p>Input an integer:</p>
+    <input type="text" id="inputInteger">
+    <button onclick="compareToZero()">Check</button>
+    <p id="output3"></p>
+    <h1>Bai 4</h1>
+    <p>Find max</p>
+    <table>
+        <tr>
+            <td><p>Input number 1:</p></td>
+            <td><input type="text" id="inputNum1"></td>
+        </tr>
+        <tr>
+            <td><p>Input number 2:</p></td>
+            <td><input type="text" id="inputNum2"></td>
+        </tr>
+        <tr>
+            <td><p>Input number 3:</p></td>
+            <td><input type="text" id="inputNum3"></td>
+        </tr>
+    </table>
+    <button onclick="findMax()">Find Max</button>
+    <p id="output4"></p>
+    <h1>Bai 5</h1>
+    <p>academic ranking</p>
+    <table>
+        <tr>
+            <td><p>Input test score:</p></td>
+            <td><input type="text" id="inputScore1"></td>
+        </tr>
+        <tr>
+            <td><p>Input middle term test score:</p></td>
+            <td><input type="text" id="inputScore2"></td>
+        </tr>
+        <tr>
+            <td><p>Input final test score</p></td>
+            <td><input type="text" id="inputScore3"></td>
+        </tr>
+    </table>
+    <button onclick="ranking()">Ranking</button>
+    <p id="output5"></p>
+    <h1>Bai 6</h1>
+    <p>Commission base on sale</p>
+    <table>
+        <tr>
+            <td><p>Input sales:</p></td>
+            <td><input type="text" id="sale"></td>
+        </tr>
+        <tr>
+            <td><p>Input percentage commission</p></td>
+            <td><input type="text" id="percentageCommission"></td>
+        </tr>
+    </table>
+    <button onclick="commission()">Commission</button>
+    <p id="output6"></p>
+    <h1>Bai 7</h1>
+    <table>
+        <tr>
+            <th>Nhập số phút gọi nội mạng</th>
+            <th>Nhập số phút gọi ngoại mạng</th>
+            <th>Nhập số MB data đã sử dụng</th>
+            <th>Nhập số lượng tin nhắn đã gửi nội mạng</th>
+            <th>Nhập số lượng tin nhắn đã gửi ngoại mạng</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="callInternal"></td>
+            <td><input type="text" id="callExternal"></td>
+            <td><input type="text" id="data"></td>
+            <td><input type="text" id="smsInternal"></td>
+            <td><input type="text" id="smsExternal"></td>
+        </tr>
+    </table>
+    <button onclick="phoneBill()">Bill</button>
+    <p id="output7"></p>
+</body>
+<script src="script.js"></script>
+</html>
