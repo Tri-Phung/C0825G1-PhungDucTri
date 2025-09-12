@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bàn cờ vua</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: orange;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      width: 60px;
+      height: 60px;
+    }
+    tr:nth-child(1) td {
+      background-color: orange !important;
+    }
+    td:nth-child(1) {
+      background-color: orange !important;
+    }
+    tr:nth-child(odd) td:nth-child(odd),
+    tr:nth-child(even) td:nth-child(even) {
+      background-color: white;
+    }
+    tr:nth-child(even) td:nth-child(odd),
+    tr:nth-child(odd) td:nth-child(even) {
+      background-color: black;
+    }
+    .col-label {
+      height: 25px;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+    }
+    .row-label {
+      width: 25px;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+        <td class="col-label"></td>
+        <td class="col-label">1</td>
+        <td class="col-label">2</td>
+        <td class="col-label">3</td>
+        <td class="col-label">4</td>
+        <td class="col-label">5</td>
+        <td class="col-label">6</td>
+        <td class="col-label">7</td>
+        <td class="col-label">8</td>
+      </tr>
+      <tr>
+        <td class="row-label">A</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">B</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">C</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">D</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">E</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">F</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">G</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="row-label">H</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </table>
+</body>
+</html>

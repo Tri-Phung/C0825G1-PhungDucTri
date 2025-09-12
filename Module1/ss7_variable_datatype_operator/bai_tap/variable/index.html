@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable</title>
+</head>
+<body>
+    <h1>Bài tập 1: Tính trung bình 3 môn</h1>
+    <table>
+        <tr>
+            <td>Vật lý:</td>
+            <td>Hóa học:</td>
+            <td>Sinh học:</td>
+        </tr>
+        <tr>
+            <td><input type="text" id="num1"></td>
+            <td><input type="text" id="num2"></td>
+            <td><input type="text" id="num3"></td>
+        </tr>
+    </table>
+    <button onclick="calculateAverage()">Tính trung bình</button>
+    <button onclick="resetFields1()">Nhập lại</button>
+    <p id="result1"></p>
+    <br>
+    <h1>Bài tập 2: Chuyển đổi nhiệt độ</h1>
+    <table>
+        <tr>
+            <td>Nhập độ C:</td>
+            <td>Độ F:</td>
+        </tr>
+        <tr>
+            <td><input type="text" id="celsius"></td>
+            <td><p id="fahrenheit"></p></td>
+        </tr>    
+    </table>
+    <button onclick="convertCtoF()">Chuyển đổi</button>
+    <button onclick="resetFields2()">Nhập lại</button>
+    <br>
+    <h1>Bài tập 3: Tính diện tích hình tròn</h1>
+    <table>
+        <tr>
+            <td>Bán kính:</td>
+            <td>Diện tích:</td>
+        </tr>
+        <tr>
+            <td><input type="text" id="radius"></td>
+            <td><p id="area"></p></td>
+        </tr>
+    </table>
+    <button onclick="calculateArea()">Tính diện tích</button>
+    <button onclick="resetFields3()">Nhập lại</button>
+    <br>
+    <h1>Bài tập 4: Tính chu vi hình tròn</h1>
+    <table>
+        <tr>
+            <td>Bán kính:</td>
+            <td>Chu vi:</td>
+        </tr>
+        <tr>
+            <td><input type="text" id="radius2"></td>
+            <td><p id="perimeter"></p></td>
+        </tr>
+    </table>
+    <button onclick="calculatePerimeter()">Tính chu vi</button>
+    <button onclick="resetFields4()">Nhập lại</button>
+</body>
+<script src="avg.js"></script>
+<script src="convert_C_F.js"></script>
+<script src="area.js"></script>
+<script src="perimeter.js"></script>
+</html>

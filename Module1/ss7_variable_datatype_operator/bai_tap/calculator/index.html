@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="7"><input type="text" id="display" value="0" disabled></td>
+        </tr>
+        <tr>
+            <td><button id="btn-rad" onclick="toRadian()">Rad</button></td>
+            <td><button id="btn-deg" onclick="toDegree()">Deg</button></td>
+            <td><button id="btn-x!" onclick="factorial()">x!</button></td>
+            <td><button id="btn-(" onclick="appendOperator('(')">(</button></td>
+            <td><button id="btn-)" onclick="appendOperator(')')">)</button></td>
+            <td><button id="btn-%" onclick="appendOperator('%')">%</button></td>
+            <td><button id="btn-ac" onclick="clearDisplay()">AC</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-inv" onclick="appendOperator('inv')">Inv</button></td>
+            <td><button id="btn-sin" onclick="appendOperator('sin')">sin</button></td>
+            <td><button id="btn-ln" onclick="appendOperator('ln')">ln</button></td>
+            <td><button id="btn-7" class="btn-number" onclick="appendNumber('7')">7</button></td>
+            <td><button id="btn-8" class="btn-number" onclick="appendNumber('8')">8</button></td>
+            <td><button id="btn-9" class="btn-number" onclick="appendNumber('9')">9</button></td>
+            <td><button id="btn-div" onclick="appendOperator('/')">÷</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-pi" onclick="appendOperator('pi')">π</button></td>
+            <td><button id="btn-cos" onclick="appendOperator('cos')">cos</button></td>
+            <td><button id="btn-log" onclick="appendOperator('log')">log</button></td>
+            <td><button id="btn-4" class="btn-number" onclick="appendNumber('4')">4</button></td>
+            <td><button id="btn-5" class="btn-number" onclick="appendNumber('5')">5</button></td>
+            <td><button id="btn-6" class="btn-number" onclick="appendNumber('6')">6</button></td>
+            <td><button id="btn-mul" onclick="appendOperator('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-e" onclick="appendOperator('e')">e</button></td>
+            <td><button id="btn-tan" onclick="appendOperator('tan')">tan</button></td>
+            <td><button id="btn-sqrt" onclick="appendOperator('sqrt')">√</button></td>
+            <td><button id="btn-1" class="btn-number" onclick="appendNumber('1')">1</button></td>
+            <td><button id="btn-2" class="btn-number" onclick="appendNumber('2')">2</button></td>
+            <td><button id="btn-3" class="btn-number" onclick="appendNumber('3')">3</button></td>
+            <td><button id="btn-sub" onclick="appendOperator('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-ans" onclick="appendOperator('ans')">Ans</button></td>
+            <td><button id="btn-exp" onclick="appendOperator('exp')">EXP</button></td>
+            <td><button id="btn-pow" onclick="appendOperator('pow')"><span>x<sup>y</sup></span></button></td>
+            <td><button id="btn-0" class="btn-number" onclick="appendNumber('0')">0</button></td>
+            <td><button id="btn-dot" class="btn-number" onclick="appendNumber('.')">.</button></td>
+            <td><button id="btn-equal" class="btn-equal" onclick="calculate()">=</button></td>
+            <td><button id="btn-add" onclick="appendOperator('+')">+</button></td>
+        </tr>
+    </table>
+</body>
+<script src="script.js"></script>
+</html>

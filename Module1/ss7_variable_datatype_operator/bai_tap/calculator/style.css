@@ -1,0 +1,36 @@
+#display {
+    background-color: white;
+    color: black;
+    text-align: right;
+    padding: 10px;
+    font-size: 24px;
+    border: 1.5px solid gray;
+    width: 490px;
+}
+button {
+    background-color: lightgray;
+    border: 1.5px solid gray;
+    font-size: 20px;
+    color: rgb(67, 67, 67);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
+}
+.btn-number {
+    background-color: rgb(234, 250, 255);
+    color: rgb(67, 67, 67);
+}
+.btn-equal {
+    background-color: #007bff;
+    color: white;
+}
+button:hover {
+    background-color: gray;
+    color: white;
+}
+button:active {
+    background-color: darkgray;
+    color: white;
+}

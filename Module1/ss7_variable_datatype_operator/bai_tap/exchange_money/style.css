@@ -1,0 +1,10 @@
+button {
+    background-color: rgb(140, 46, 255);
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+p {
+    font-size: 20px;
+    color: blue;
+}

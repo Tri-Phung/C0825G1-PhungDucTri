@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Tạo form đơn giản</title>
+    <style>
+        body {
+            background-color: #d6f7ff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" style="width: 600px; margin: auto; background-color: white;">
+        <h2 align="center" style="background-color: orangered; color: white; padding: 5px;">SỞ THÍCH CỦA BẠN</h2>
+        <table align="center" style="color: orangered;">
+            <tr>
+                <td style="color: blue; text-align: right;">Họ và tên</td>
+                <td><input type="text" name="yourname" size="30"></td>
+            </tr>
+            <tr>
+                <td style="color: blue; text-align: right;">Email</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td style="color: blue; vertical-align: top; text-align: right;">Sở thích</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="Sport">Thể thao
+                    <input type="checkbox" name="hobby" value="Music">Âm nhạc
+                    <input type="checkbox" name="hobby" value="Book">Đọc sách<br>
+                    <input type="checkbox" name="hobby" value="Web">Lướt web
+                    <input type="checkbox" name="hobby" value="Game">Chơi game
+                    <input type="checkbox" name="hobby" value="Movie">Điện ảnh<br>
+                    <input type="checkbox" name="hobby" value="Travel">Du lịch<br>
+                    <input type="submit" value="Gửi thông tin">
+                    <input type="reset" value="Nhập lại">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
