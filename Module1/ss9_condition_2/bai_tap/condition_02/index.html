@@ -6,19 +6,166 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bài 1</h1>
-    
-    <h1>Bài 2</h1>
-    <h1>Bài 3</h1>
-    <h1>Bài 4</h1>
-    <h1>Bài 5</h1>
-    <h1>Bài 6</h1>
-    <h1>Bài 7</h1>
-    <h1>Bài 8</h1>
-    <h1>Bài 9</h1>
-    <h1>Bài 10</h1>
-    <h1>Bài 11</h1>
-    <h1>Bài 12</h1>
+    <h1>Bài 1: Chuyển từ độ C sang độ F.</h1>
+    <table>
+        <tr>
+            <td>Nhập độ C:</td>
+            <td><input type="text" id="inputC"></td>
+        </tr>
+    </table>
+    <button onclick="convertCtoF()">Chuyển đổi</button>
+    <p id="output1"></p>
+    <h1>Bài 2: Chuyển từ mét sang feet</h1>
+    <table>
+        <tr>
+            <td>Nhập số mét:</td>
+            <td><input type="text" id="inputM"></td>
+        </tr>
+    </table>
+    <button onclick="convertMtoFeet()">Chuyển đổi</button>
+    <p id="output2"></p>
+    <h1>Bài 3: Tính diện tích hình vuông khi biết cạnh a</h1>
+    <table>
+        <tr>
+            <td>Nhập cạnh a:</td>
+            <td><input type="text" id="inputSide"></td>
+        </tr>
+    </table>
+    <button onclick="calculateSquareArea()">Tính diện tích</button>
+    <p id="output3"></p>
+    <h1>Bài 4: Tính diện tích hình  chữ nhật khi biết 2 cạnh a, b</h1>
+    <table>
+        <tr>
+            <td>Nhập cạnh a:</td>
+            <td><input type="text" id="inputSideA"></td>
+        </tr>
+        <tr>
+            <td>Nhập cạnh b:</td>
+            <td><input type="text" id="inputSideB"></td>
+        </tr>
+    </table>
+    <button onclick="calculateRectangleArea()">Tính diện tích</button>
+    <p id="output4"></p>
+    <h1>Bài 5: Tính diện tích tam giác vuông khi biết 2 cạnh kề a, b</h1>
+    <table>
+        <tr>
+            <td>Nhập cạnh a:</td>
+            <td><input type="text" id="inputSide1"></td>
+        </tr>
+        <tr>
+            <td>Nhập cạnh b:</td>
+            <td><input type="text" id="inputSide2"></td>
+        </tr>
+    </table>
+    <button onclick="calculateTriangleArea()">Tính diện tích</button>
+    <p id="output5"></p>
+    <h1>Bài 6: Giải phương trình bậc 1</h1>
+    <table>
+        <tr>
+            <td>Nhập hệ số a:</td>
+            <td><input type="text" id="inputA"></td>
+        </tr>
+        <tr>
+            <td>Nhập hệ số b:</td>
+            <td><input type="text" id="inputB"></td>
+        </tr>
+    </table>
+    <button onclick="solveLinearEquation()">Giải phương trình</button>
+    <button onclick="resetField6()">Nhập lại</button>
+    <p id="output6"></p>
+    <h1>Bài 7: Giải phương trình bậc 2</h1>
+    <table>
+        <tr>
+            <td>Nhập hệ số a:</td>
+            <td><input type="text" id="inputA2"></td>
+        </tr>
+        <tr>
+            <td>Nhập hệ số b:</td>
+            <td><input type="text" id="inputB2"></td>
+        </tr>
+        <tr>
+            <td>Nhập hệ số c:</td>
+            <td><input type="text" id="inputC2"></td>
+        </tr>
+    </table>
+    <button onclick="solveQuadraticEquation()">Giải phương trình</button>
+    <button onclick="resetField7()">Nhập lại</button>
+    <p id="output7"></p>
+    <h1>Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ 120 và lơn hơn 0</h1>
+    <table>
+        <tr>
+            <td>Nhập số nguyên:</td>
+            <td><input type="text" id="inputInteger"></td>
+        </tr>
+    </table>
+    <button onclick="checkIfAge()">Kiểm tra</button>
+    <p id="output8"></p>
+    <h1>Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác</h1>
+    <table>
+        <tr>
+            <td>Nhập cạnh a:</td>
+            <td><input type="text" id="inputSideA9"></td>
+        </tr>
+        <tr>
+            <td>Nhập cạnh b:</td>
+            <td><input type="text" id="inputSideB9"></td>
+        </tr>
+        <tr>
+            <td>Nhập cạnh c:</td>
+            <td><input type="text" id="inputSideC9"></td>
+        </tr>
+    </table>
+    <button onclick="checkIfTriangle()">Kiểm tra</button>
+    <p id="output9"></p>
+    <h1>Bài 10: Viết chương trình tính giá điện</h1>
+    <table>
+        <tr>
+            <td>Nhập số kWh:</td>
+            <td><input type="text" id="inputKWh"></td>
+        </tr>
+    </table>
+    <button onclick="calculateElectricityBill()">Tính giá điện</button>
+    <p id="output10"></p>
+    <h1>Bài 11: Viết chương trình tính thuế thu nhập cá nhân</h1>
+    <table>
+        <tr>
+            <td>Tổng thu nhập (VND):</td>
+            <td><input type="text" id="totalIncome"></td>
+        </tr>
+        <tr>
+            <td>Số người phụ thuộc:</td>
+            <td><input type="text" id="dependents"></td>
+        </tr>
+        <tr>
+            <td>Tổng các khoản bảo hiểm bắt buộc (VND):</td>
+            <td><input type="text" id="insurance"></td>
+        </tr>
+        <tr>
+            <td>Tổng các khoản đóng góp từ thiện (VND):</td>
+            <td><input type="text" id="charity"></td>
+        </tr>
+    </table>
+    <button onclick="calculatePersonalIncomeTax()">Tính thuế</button>
+    <button onclick="resetField11()">Nhập lại</button>
+    <div id="output11"></div>
+    <h1>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con)</h1>
+    <table>
+        <tr>
+            <td>Số tiền ban đầu (VND):</td>
+            <td><input type="text" id="principal"></td>
+        </tr>
+        <tr>
+            <td>Số tháng cho vay:</td>
+            <td><input type="text" id="months"></td>
+        </tr>
+        <tr>
+            <td>Lãi suất hàng tháng (%):</td>
+            <td><input type="text" id="monthlyRate"></td>
+        </tr>
+    </table>
+    <button onclick="calculateCompoundInterest()">Tính lãi kép</button>
+    <button onclick="resetField12()">Nhập lại</button>
+    <div id="output12"></div>
 </body>
 <script src="script.js"></script>
 </html>
