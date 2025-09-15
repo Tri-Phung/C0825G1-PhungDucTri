@@ -33,6 +33,10 @@ function checkIfAgeEnough() {
         document.getElementById('output2').innerHTML = 'Please input a number of age';
         return;
     }
+    if (age <= 0) {
+        document.getElementById('output2').innerHTML = 'Age must be greater than 0';
+        return;
+    }
     if (age >= 15) {
         document.getElementById('output2').innerHTML = 'Pass';
     }

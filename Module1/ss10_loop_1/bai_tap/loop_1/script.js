@@ -50,7 +50,6 @@ function findFibonacciDivisibleBy5() {
     let fibonacci_1 = 0;
     let fibonacci_2 = 1;
     let next = 0;
-    let count = 0;
     while (true) {
         next = fibonacci_1 + fibonacci_2;
         if (next % 5 === 0) {
@@ -59,7 +58,6 @@ function findFibonacciDivisibleBy5() {
         }
         fibonacci_1 = fibonacci_2;
         fibonacci_2 = next;
-        count++;
     }
 }
 
