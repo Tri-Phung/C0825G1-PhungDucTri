@@ -13,13 +13,16 @@ function countTo100() {
 //Bai 2
 function checkTemperature() {
     let temperature = prompt("Nhập nhiệt độ hiện tại:");
-    if (temperature === null || temperature === "") {
-        document.getElementById("output2").innerHTML = "Vui lòng nhập nhiệt độ!";
-        return;
-    }
-    if (isNaN(temperature)) {
-        document.getElementById("output2").innerHTML = "Vui lòng nhập một số hợp lệ.";
-        return;
+    while(true) {
+        if (temperature === null || temperature === "") {
+        temperature = prompt("Vui lòng nhập nhiệt độ!");
+        }
+        else if (isNaN(temperature)) {
+            temperature = prompt("Vui lòng nhập một số hợp lệ.");
+        }
+        else {
+            break;
+        }
     }
     temperature = parseFloat(temperature);
     if (temperature > 100) {
@@ -33,14 +36,14 @@ function checkTemperature() {
 
 //Bai 3
 function displayFibonacci() {
-    fibonacci_1 = 0;
-    fibonacci_2 = 1;
+    fibonacci1 = 0;
+    fibonacci2 = 1;
     let result = "20 số đầu tiên trong dãy Fibonacci: ";
     for (let i = 0; i < 20; i++) {
-        result += fibonacci_1 + ' ';
-        let next = fibonacci_1 + fibonacci_2;
-        fibonacci_1 = fibonacci_2;
-        fibonacci_2 = next;
+        result += fibonacci1 + ' ';
+        let next = fibonacci1 + fibonacci2;
+        fibonacci1 = fibonacci2;
+        fibonacci2 = next;
     }
     document.getElementById("output3").innerHTML = result;
 }
@@ -66,9 +69,10 @@ function calculateFibonacciSum20() {
     let fibonacci_1 = 0;
     let fibonacci_2 = 1;
     let sum = 0;
+    let next = 0;
     for (let i = 0; i < 20; i++) {
         sum += fibonacci_1;
-        let next = fibonacci_1 + fibonacci_2;
+        next = fibonacci_1 + fibonacci_2;
         fibonacci_1 = fibonacci_2;
         fibonacci_2 = next;
     }
