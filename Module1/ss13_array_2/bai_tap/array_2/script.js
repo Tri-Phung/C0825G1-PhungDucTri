@@ -89,10 +89,9 @@ function searchAndReplace() {
     document.getElementById('input6').innerHTML = `Mảng ký tự vừa nhập vào: ${input}`;
     let len = input.length;
     let count = 0;
-    let replace;
+    let replace = input.replace(/-/g,'_');;
     for (i = 0; i < len; i++) {
         if (input[i] === '-') {
-            replace = input.replace(/-/g,'_');
             count++;
         }
     }

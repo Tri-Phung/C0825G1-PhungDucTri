@@ -3,7 +3,8 @@ let vi = ['một','khả năng','có khả năng','khoảng','trên, phía trên
 function trans() {
     let input = document.getElementById('inputEn').value;
     let result = '';
-    for (i = 0; i < en.length; i++) {
+    let len = en.length;
+    for (i = 0; i < len; i++) {
         if (en[i] === input) {
             result = `${en[i]}: ${vi[i]}`;
             break;

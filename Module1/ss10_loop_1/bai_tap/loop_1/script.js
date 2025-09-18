@@ -39,9 +39,10 @@ function displayFibonacci() {
     fibonacci1 = 0;
     fibonacci2 = 1;
     let result = "20 số đầu tiên trong dãy Fibonacci: ";
+    let next = 0;
     for (let i = 0; i < 20; i++) {
         result += fibonacci1 + ' ';
-        let next = fibonacci1 + fibonacci2;
+        next = fibonacci1 + fibonacci2;
         fibonacci1 = fibonacci2;
         fibonacci2 = next;
     }
