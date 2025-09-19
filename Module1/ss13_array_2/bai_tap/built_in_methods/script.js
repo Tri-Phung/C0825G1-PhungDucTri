@@ -5,6 +5,10 @@ document.getElementById('output1').innerHTML = myColorIntoString;
 //Bai 2
 function addCharacter() {
     let inputNumbers = document.getElementById('inputNumbers').value;
+    if (isNaN(inputNumbers) || !Number.isInteger(parseFloat(inputNumbers))) {
+        document.getElementById('output2').innerHTML = 'Chuỗi bạn nhập vào không phải chuỗi số';
+        return;
+    }
     let string = '';
     for (i = 0; i < inputNumbers.length; i++) {
         string += inputNumbers[i];
