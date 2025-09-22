@@ -66,7 +66,6 @@ function Mobile(phone) {
     };
     this.receiveMessage = function(sender, message) {
         this.inbox.push([sender, message]);
-        console.log(`${this.phone} vừa nhận tin nhắn từ ${sender} với nội dung là "${message}"`);
     };
     this.viewInbox = function() {
         if (!this.isOn) {
@@ -79,13 +78,15 @@ function Mobile(phone) {
         }
         if (this.inbox.length === 0) {
             console.log(`Điện thoại ${this.phone} hiện không có tin nhắn nào!`);
+            return;
         }
         else {
             this.battery--;
-            console.log(`Hộp thư đến:`);
+            let output = `Hộp thư đến:<br>`;
             this.inbox.forEach(([phone, content]) => {
-                console.log(`Người gửi: ${phone}. Nội dung tin nhắn: ${content}`);
+                output += `Người gửi: ${phone}. Nội dung tin nhắn: ${content} <br>`;
             });
+            return output;
         }
     };
     this.viewSentMessage = function() {
@@ -102,10 +103,11 @@ function Mobile(phone) {
         }
         else {
             this.battery--;
-            console.log(`Tin nhắn đã gửi:`);
+            let output = `Tin nhắn đã gửi: <br>`;
             this.sentMessages.forEach(([receiver, content]) => {
-                console.log(`Người nhận: ${receiver}. Nội dung tin nhắn: ${content}`);
+                output += `Người nhận: ${receiver}. Nội dung tin nhắn: ${content} <br>`;
             });
+            return output;
         }
     };
 }
@@ -123,7 +125,7 @@ function showInfo() {
 showInfo();
 
 function turnOn1() {
-    if (phone1.isOn === true) {
+    if (phone1.isOn) {
         alert('Điện thoại này đã bật rồi');
         return;
     }
@@ -132,31 +134,181 @@ function turnOn1() {
 }
 
 function turnOn2() {
-    if (phone2.isOn === true) {
+    if (phone2.isOn) {
         alert('Điện thoại này đã bật rồi');
         return;
     }
     phone2.turnOn();
     showInfo();
 }
+function turnOff1() {
+    if (!phone1.isOn) {
+        alert('Điện thoại này đã tắt rồi');
+        return;
+    }
+    phone1.turnOff();
+    showInfo();
+}
 
+function turnOff2() {
+    if (!phone2.isOn) {
+        alert('Điện thoại này đã tắt rồi');
+        return;
+    }
+    phone2.turnOff();
+    showInfo();
+}
 function charge1() {
     if (phone1.battery === 100) {
         alert('Pin đã đầy');
         return;
     }
-    phone1.charge()
+    phone1.charge();
+    showInfo();
 }
-console.log(phone1.getStatus());
-console.log(phone2.getStatus());
+function charge2() {
+    if (phone2.battery === 100) {
+        alert('Pin đã đầy');
+        return;
+    }
+    phone2.charge();
+    showInfo();
+}
 
-phone1.writeMessage('Hello mtfk');
-phone1.sendMessage(phone2);
+function message1() {
+    if (!phone1.isOn) {
+            alert(`Điện thoại ${phone1.phone} đang tắt!`);
+            return;
+        }
+    if (phone1.battery === 0) {
+            alert(`Điện thoại ${phone1.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    inputContent = prompt('Mời nhập vào nội dung tin nhắn:')
+    phone1.writeMessage(inputContent);
+    showInfo();
+}
 
-phone1.writeMessage('hi yfkb');
-phone1.sendMessage(phone2);
+function message2() {
+    if (!phone2.isOn) {
+            alert(`Điện thoại ${phone2.phone} đang tắt!`);
+            return;
+        }
+    if (phone2.battery === 0) {
+            alert(`Điện thoại ${phone2.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    inputContent = prompt('Mời nhập vào nội dung tin nhắn:')
+    phone2.writeMessage(inputContent);
+    showInfo();
+}
 
-phone1.viewInbox();
-phone1.viewSentMessage();
+function sendMess1() {
+    if (!phone1.isOn) {
+            alert(`Điện thoại ${phone1.phone} đang tắt!`);
+            return;
+        }
+    if (phone1.battery === 0) {
+            alert(`Điện thoại ${phone1.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone1.messageContent.trim() === '') {
+        alert(`Bạn chưa nhập nội dung tin nhắn`);
+        return;
+    }
+    phone1.sendMessage(phone2);
+    alert(`Đã gửi tin nhắn đến ${phone2.phone}`)
+    document.getElementById('notification2').innerHTML = `Bạn vừa nhận tin nhắn mới từ ${phone1.phone}`;
+    showInfo();
+}
 
+function sendMess2() {
+    if (!phone2.isOn) {
+            alert(`Điện thoại ${phone2.phone} đang tắt!`);
+            return;
+        }
+    if (phone2.battery === 0) {
+            alert(`Điện thoại ${phone2.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone2.messageContent.trim() === '') {
+        alert(`Bạn chưa nhập nội dung tin nhắn`);
+        return;
+    }
+    phone2.sendMessage(phone1);
+    alert(`Đã gửi tin nhắn đến ${phone1.phone}`)
+    document.getElementById('notification1').innerHTML = `Bạn vừa nhận tin nhắn mới từ ${phone2.phone}`;
+    showInfo();
+}
 
+function checkInbox1() {
+    if (!phone1.isOn) {
+            alert(`Điện thoại ${phone1.phone} đang tắt!`);
+            return;
+        }
+    if (phone1.battery === 0) {
+            alert(`Điện thoại ${phone1.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone1.inbox.length === 0) {
+            alert(`Điện thoại ${phone1.phone} hiện không có tin nhắn nào!`);
+        }
+    else {
+        document.getElementById('inbox1').innerHTML = phone1.viewInbox();
+    }
+    showInfo();
+}
+
+function checkInbox2() {
+    if (!phone2.isOn) {
+            alert(`Điện thoại ${phone2.phone} đang tắt!`);
+            return;
+        }
+    if (phone2.battery === 0) {
+            alert(`Điện thoại ${phone2.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone2.inbox.length === 0) {
+            alert(`Điện thoại ${phone2.phone} hiện không có tin nhắn nào!`);
+        }
+    else {
+        document.getElementById('inbox2').innerHTML = phone2.viewInbox();
+    }
+    showInfo();
+}
+
+function checkSent1() {
+    if (!phone1.isOn) {
+            alert(`Điện thoại ${phone1.phone} đang tắt!`);
+            return;
+        }
+    if (phone1.battery === 0) {
+            alert(`Điện thoại ${phone1.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone1.sentMessages.length === 0) {
+            alert(`Điện thoại ${phone1.phone} hiện không có tin nhắn đã gửi nào!`);
+        }
+    else {
+        document.getElementById('sentMess1').innerHTML = phone1.viewSentMessage();
+    }
+    showInfo();
+}
+
+function checkSent2() {
+    if (!phone2.isOn) {
+            alert(`Điện thoại ${phone2.phone} đang tắt!`);
+            return;
+        }
+    if (phone2.battery === 0) {
+            alert(`Điện thoại ${phone2.phone} hết pin. Vui lòng sạc pin`);
+            return;
+        }
+    if (phone2.sentMessages.length === 0) {
+            alert(`Điện thoại ${phone2.phone} hiện không có tin nhắn đã gửi nào!`);
+        }
+    else {
+        document.getElementById('sentMess2').innerHTML = phone2.viewSentMessage();
+    }
+    showInfo();
+}
