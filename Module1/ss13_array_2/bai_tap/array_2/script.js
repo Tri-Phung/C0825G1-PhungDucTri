@@ -19,14 +19,14 @@ function checkIfInputValid(input) {
 
 //Bai 1
 let arr1 = initArr(-100, 100, 5, 4);
-let result_1 = '';
+let result1 = '';
 for (i in arr1) {
-    result_1 += 'row ' + i +'<br>';
+    result1 += 'row ' + i +'<br>';
     for (j in arr1[i]) {
-        result_1 += arr1[i][j] + '<br>';
+        result1 += arr1[i][j] + '<br>';
     }
 }
-document.getElementById('output1').innerHTML = `Mảng khởi tạo: <br>${result_1}`;
+document.getElementById('output1').innerHTML = `Mảng khởi tạo: <br>${result1}`;
 
 //Bai 2
 let arr2 = ['c', 's', 'c', '2', '6', '1'];
@@ -66,13 +66,13 @@ function countWords() {
 
 //Bai 5
 function checkIfEqual() {
-    let input_a = document.getElementById('inputString5A').value;
-    let input_b = document.getElementById('inputString5B').value;
-    if (!checkIfInputValid(input_a) || !checkIfInputValid(input_b)) {
+    let inputA = document.getElementById('inputString5A').value;
+    let inputB = document.getElementById('inputString5B').value;
+    if (!checkIfInputValid(inputA) || !checkIfInputValid(inputB)) {
         return;
     }
-    document.getElementById('input5').innerHTML = `Chuỗi thứ nhất vừa nhập vào: "${input_a}" và chuỗi thứ hai: "${input_b}"`;
-    if (input_a === input_b) {
+    document.getElementById('input5').innerHTML = `Chuỗi thứ nhất vừa nhập vào: "${inputA}" và chuỗi thứ hai: "${inputB}"`;
+    if (inputA === inputB) {
         document.getElementById('output5').innerHTML = `Hai chuỗi giống nhau`;
     }
     else {
