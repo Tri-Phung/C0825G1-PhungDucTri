@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <audio id="bgm" autoplay loop muted><source src="theme.mp3" type="audio/mpeg"></audio>
+    <video autoplay muted loop id="myVideo"><source src="footage.mp4" type="video/mp4"></video>
+
+    <div id="game-container">
+        <table id="board"></table>
+    </div>
+    <div id="startModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to the Block Puzzle game</h2>
+            <p>Click Play to start the game</p>
+            <button id="startButton" class="button">Play</button>
+        </div>
+    </div>
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <p>Your score: <span id="finalScore">0</span></p>
+            <button id="newGameBtn" class="button">New Game</button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
