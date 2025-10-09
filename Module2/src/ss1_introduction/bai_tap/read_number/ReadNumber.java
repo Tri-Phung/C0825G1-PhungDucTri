@@ -1,6 +1,8 @@
+package ss1_introduction.bai_tap.read_number;
+
 import java.util.Scanner;
 
-public class ReadTheNumber {
+public class ReadNumber {
     public static void main(String[] args) {
         int maxValue = 999;
         int minValue = 0;

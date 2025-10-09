@@ -1,6 +1,8 @@
+package ss1_introduction.bai_tap.say_hello;
+
 import java.util.Scanner;
 
-public class Hello {
+public class SayHello {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name:");
