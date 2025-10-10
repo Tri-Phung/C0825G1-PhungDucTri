@@ -1,7 +1,6 @@
 package ss3_array_function.array.bai_tap.delete_element;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class DeleteElement {
     public static void main(String[] args) {
@@ -10,14 +9,15 @@ public class DeleteElement {
             arr[i] = (int) (Math.random() * 100);
         }
         System.out.print("Your array: ");
-        for (int element: arr) {
+        for (int element : arr) {
             System.out.print(element + " ");
         }
         System.out.println();
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the value you want to delete: ");
+        while(true) {
         try {
-            int value = sc.nextInt();
+            System.out.print("Enter the value you want to delete: ");
+            int value = Integer.parseInt(sc.nextLine());
             boolean found = false;
             for (int k : arr) {
                 if (k == value) {
@@ -27,8 +27,7 @@ public class DeleteElement {
             }
             if (!found) {
                 System.out.println("Value not found in array.");
-            }
-            else {
+            } else {
                 for (int i = 0; i < arr.length; i++) {
                     if (arr[i] == value) {
                         for (int j = i; j < arr.length - 1; j++) {
@@ -38,16 +37,13 @@ public class DeleteElement {
                     }
                 }
                 System.out.print("New array: ");
-                for (int element: arr) {
+                for (int element : arr) {
                     System.out.print(element + " ");
                 }
             }
-        }
-        catch (InputMismatchException e) {
+            break;
+        } catch (NumberFormatException e) {
             System.out.println("Input should be integer");
-        }
-        finally {
-            sc.close();
-        }
+        } }
     }
 }
