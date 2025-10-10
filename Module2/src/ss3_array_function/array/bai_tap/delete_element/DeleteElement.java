@@ -14,36 +14,37 @@ public class DeleteElement {
         }
         System.out.println();
         Scanner sc = new Scanner(System.in);
-        while(true) {
-        try {
-            System.out.print("Enter the value you want to delete: ");
-            int value = Integer.parseInt(sc.nextLine());
-            boolean found = false;
-            for (int k : arr) {
-                if (k == value) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                System.out.println("Value not found in array.");
-            } else {
-                for (int i = 0; i < arr.length; i++) {
-                    if (arr[i] == value) {
-                        for (int j = i; j < arr.length - 1; j++) {
-                            arr[j] = arr[j + 1];
-                        }
-                        arr[arr.length - 1] = 0;
+        while (true) {
+            try {
+                System.out.print("Enter the value you want to delete: ");
+                int value = Integer.parseInt(sc.nextLine());
+                boolean found = false;
+                for (int k : arr) {
+                    if (k == value) {
+                        found = true;
+                        break;
                     }
                 }
-                System.out.print("New array: ");
-                for (int element : arr) {
-                    System.out.print(element + " ");
+                if (!found) {
+                    System.out.println("Value not found in array.");
+                } else {
+                    for (int i = 0; i < arr.length; i++) {
+                        if (arr[i] == value) {
+                            for (int j = i; j < arr.length - 1; j++) {
+                                arr[j] = arr[j + 1];
+                            }
+                            arr[arr.length - 1] = 0;
+                        }
+                    }
+                    System.out.print("New array: ");
+                    for (int element : arr) {
+                        System.out.print(element + " ");
+                    }
                 }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Input should be integer");
             }
-            break;
-        } catch (NumberFormatException e) {
-            System.out.println("Input should be integer");
-        } }
+        }
     }
 }
