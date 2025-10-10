@@ -1,6 +1,7 @@
 package ss3_array_function.array.bai_tap.insert_element;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class InsertElement {
     public static void main(String[] args) {
@@ -65,8 +66,11 @@ public class InsertElement {
                 }
             }
         }
-        catch (Exception e) {
-            System.out.println("Invalid input");
+        catch (InputMismatchException e) {
+            System.out.println("Input should be integer");
+        }
+        finally {
+            sc.close();
         }
 
     }
