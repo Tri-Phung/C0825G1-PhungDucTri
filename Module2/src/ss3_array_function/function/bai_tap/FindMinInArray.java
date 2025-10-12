@@ -31,7 +31,7 @@ public class FindMinInArray {
                         System.out.println("Min value is: " + minValue(array));
                         break;
                     case 2:
-                        inputArray();
+                        System.out.println("Min value is: " + minValue(inputArray()));
                         break;
                 }
                 break;
@@ -51,14 +51,15 @@ public class FindMinInArray {
         return min;
     }
 
-    public static void inputArray() {
+    public static int[] inputArray() {
         Scanner sc = new Scanner(System.in);
         int size;
+        int[] arr;
         while (true) {
             try {
                 System.out.print("Enter the size of your array: ");
                 size = Integer.parseInt(sc.nextLine());
-                int[] arr = new int[size];
+                arr = new int[size];
                 for (int i = 0; i < arr.length; i++) {
                     System.out.print("Enter the element " + i + ":");
                     arr[i] = Integer.parseInt(sc.nextLine());
@@ -68,11 +69,11 @@ public class FindMinInArray {
                     System.out.print(j + " ");
                 }
                 System.out.println();
-                System.out.println("Min value is: " + minValue(arr));
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
             }
         }
+        return arr;
     }
 }
