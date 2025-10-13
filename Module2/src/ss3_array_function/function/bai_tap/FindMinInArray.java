@@ -1,10 +1,12 @@
 package ss3_array_function.function.bai_tap;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class FindMinInArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Random random = new Random();
         int choice;
         while (true) {
             try {
@@ -21,7 +23,7 @@ public class FindMinInArray {
                     case 1:
                         int[] array = new int[10];
                         for (int i = 0; i < array.length; i++) {
-                            array[i] = (int) (Math.random() * 100);
+                            array[i] = random.nextInt(100);
                         }
                         System.out.println("Your array: ");
                         for (int j : array) {

@@ -1,5 +1,7 @@
 package ss3_array_function.function.bai_tap;
 
+import com.sun.tools.javac.Main;
+
 import java.util.Scanner;
 
 public class SumInCol {
