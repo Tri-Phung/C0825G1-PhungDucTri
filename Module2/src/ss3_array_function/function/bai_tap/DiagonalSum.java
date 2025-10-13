@@ -4,7 +4,7 @@ public class DiagonalSum {
     public static void main(String[] args) {
         double[][] matrix;
         while(true) {
-            matrix = FindMaxInTwoDimensionalArray.inputMatrix();
+            matrix = CommonUtils.inputMatrix();
             if (matrix.length != matrix[0].length) {
                 System.out.println("The matrix is not square!");
                 continue;

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SumInCol {
     public static void main(String[] args) {
-        double[][] matrix = FindMaxInTwoDimensionalArray.inputMatrix();
+        double[][] matrix = CommonUtils.inputMatrix();
         double sum = 0;
         Scanner sc = new Scanner(System.in);
         while (true) {
