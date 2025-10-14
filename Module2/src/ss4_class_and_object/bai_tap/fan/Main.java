@@ -3,7 +3,7 @@ package ss4_class_and_object.bai_tap.fan;
 public class Main {
     static void main(String[] args) {
         Fan fan1 = new Fan();
-        fan1.setSpeed(Fan.FAST);
+        fan1.setSpeed(Fan.SLOW);
         fan1.setRadius(10);
         fan1.setColor("yellow");
         fan1.setOn(true);

@@ -2,7 +2,7 @@ package ss4_class_and_object.bai_tap.stop_watch;
 
 import java.time.temporal.ChronoField;
 
-public class StopWatch {
+class StopWatch {
     private long startTime;
     private long endTime;
     public StopWatch() {
