@@ -5,18 +5,21 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Scanner sc = new Scanner(System.in);
-        double a, b, c;
         while (true) {
             try {
-                System.out.print("Enter a: ");
-                a = Double.parseDouble(sc.nextLine());
-                System.out.print("Enter b: ");
-                b = Double.parseDouble(sc.nextLine());
-                System.out.print("Enter c: ");
-                c = Double.parseDouble(sc.nextLine());
-                QuadraticEquation quadraticEquation = new QuadraticEquation(a, b, c);
-                System.out.println(quadraticEquation.display());
-                break;
+                System.out.print("Enter a, b, c: ");
+                String line = sc.nextLine();
+                String[] arr = line.split(" ");
+                if (arr.length != 3) {
+                    System.out.println("Invalid input");
+                } else {
+                    double a = Double.parseDouble(arr[0]);
+                    double b = Double.parseDouble(arr[1]);
+                    double c = Double.parseDouble(arr[2]);
+                    QuadraticEquation quadraticEquation = new QuadraticEquation(a, b, c);
+                    System.out.println(quadraticEquation.display());
+                    break;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input type");
             }
