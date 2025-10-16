@@ -1,6 +1,8 @@
 package ss6_inheritance.bai_tap.entity;
 
-public class Circle {
+import ss6_inheritance.thuc_hanh.entity.Shape;
+
+public class Circle extends Shape {
     private double radius;
     private String color;
     public Circle() {
@@ -8,6 +10,14 @@ public class Circle {
     public Circle(double r, String c) {
         radius = r;
         color = c;
+    }
+
+    public Circle(double r) {
+    }
+
+    public Circle(double radius, String color, boolean filled ) {
+        super(color, filled);
+        this.radius = radius;
     }
 
     public String getColor() {
