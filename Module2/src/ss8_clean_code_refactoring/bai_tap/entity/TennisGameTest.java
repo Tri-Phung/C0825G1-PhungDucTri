@@ -80,4 +80,5 @@ public class TennisGameTest {
         }
         assertEquals(this.expectedScore, TennisGame.getScore("John", "Bill", m_score1, m_score2));
     }
+
 }
