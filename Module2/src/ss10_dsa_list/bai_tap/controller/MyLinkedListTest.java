@@ -12,13 +12,13 @@ public class MyLinkedListTest {
         listInteger.add(4);
         listInteger.add(5);
         System.out.println(listInteger);
-        // add element at a specific position
+        // add an element at a specific position
         listInteger.add(2,6);
         System.out.println("After insert element 6 at index 2: \n" + listInteger);
-        // add element to the head
+        // add an element to the head
         listInteger.addFirst(7);
         System.out.println("After insert element 7 to the head: \n" + listInteger);
-        // add element to the tail
+        // add an element to the tail
         listInteger.addLast(3);
         System.out.println("After insert element 3 to the tail: \n" + listInteger);
         // remove element at a specific position
