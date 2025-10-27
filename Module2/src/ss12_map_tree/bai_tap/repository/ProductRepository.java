@@ -20,15 +20,8 @@ public class ProductRepository {
         return productList;
     }
 
-    public Product getProductById(int id) {
-        return productList.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
     public boolean update(int id, String newName, double newPrice) {
-        Product product = getProductById(id);
+        Product product = productList.get(id);
         if (product == null) return false;
         product.setName(newName);
         product.setPrice(newPrice);

@@ -48,12 +48,16 @@ public class ProductManagerMainMenu {
                         try {
                             System.out.print("Enter product ID to edit: ");
                             int editId = Integer.parseInt(sc.nextLine());
+                            if (!controller.existsById(editId)) {
+                                System.out.println("Product not found");
+                                break;
+                            }
                             System.out.print("Enter new name: ");
                             String newName = sc.nextLine();
                             System.out.print("Enter new price: ");
                             double newPrice = Double.parseDouble(sc.nextLine());
                             boolean ok = controller.editProduct(editId, newName, newPrice);
-                            System.out.println(ok ? "Product edited successfully" : "Product not found");
+                            System.out.println(ok ? "Product edited successfully" : "Update failed");
                         } catch (NumberFormatException e) {
                             System.out.println("Invalid input");
                         }

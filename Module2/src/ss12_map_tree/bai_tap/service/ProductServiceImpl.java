@@ -12,14 +12,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean add(Product product) {
         if (product == null) return false;
-        if (existsById(product.getId())) return false;
         return productRepository.add(product);
     }
 
     @Override
     public boolean update(int id, String newName, double newPrice) {
-        Product existing = productRepository.getProductById(id);
-        if (existing == null) return false;
         return productRepository.update(id, newName, newPrice);
     }
 
