@@ -1,7 +1,9 @@
 package ss12_map_tree.bai_tap.repository;
 
 import ss12_map_tree.bai_tap.entity.Product;
+import ss12_map_tree.bai_tap.service.ProductDescendingPriceComparator;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,13 +51,13 @@ public class ProductRepository {
 
     public List<Product> sortProductsAscending() {
         List<Product> copy = new LinkedList<>(productList);
-        copy.sort(null);
+        Collections.sort(copy);
         return copy;
     }
 
     public List<Product> sortProductsDescending() {
         List<Product> copy = new LinkedList<>(productList);
-        copy.sort((p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice()));
+        copy.sort(new ProductDescendingPriceComparator());
         return copy;
     }
 }
