@@ -20,9 +20,7 @@ public class ProductServiceImpl implements ProductService {
     public boolean update(int id, String newName, double newPrice) {
         Product existing = productRepository.getProductById(id);
         if (existing == null) return false;
-        existing.setName(newName);
-        existing.setPrice(newPrice);
-        return true;
+        return productRepository.update(id, newName, newPrice);
     }
 
     @Override

@@ -31,7 +31,8 @@ public class ProductRepository {
         Product product = getProductById(id);
         if (product == null) return false;
         product.setName(newName);
-        return false;
+        product.setPrice(newPrice);
+        return true;
     }
 
     public boolean delete(int id) {
@@ -49,7 +50,7 @@ public class ProductRepository {
 
     public List<Product> findProductsByName(String name) {
         return productList.stream()
-                .filter(p -> p.getName().contains(name))
+                .filter(p -> p.getName().toLowerCase().contains(name))
                 .toList();
     }
 
