@@ -1,4 +1,4 @@
-package ss12_map_tree.bai_tap.service;
+package ss12_map_tree.bai_tap.common;
 
 import ss12_map_tree.bai_tap.entity.Product;
 
