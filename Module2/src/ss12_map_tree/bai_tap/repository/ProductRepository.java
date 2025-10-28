@@ -1,7 +1,7 @@
 package ss12_map_tree.bai_tap.repository;
 
 import ss12_map_tree.bai_tap.entity.Product;
-import ss12_map_tree.bai_tap.common.ProductDescendingPriceComparator;
+import ss12_map_tree.bai_tap.common.compare.ProductDescendingPriceComparator;
 
 import java.util.Collections;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package ss12_map_tree.bai_tap.common;
+package ss12_map_tree.bai_tap.common.compare;
 
 import ss12_map_tree.bai_tap.entity.Product;
 
