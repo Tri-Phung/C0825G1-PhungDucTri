@@ -17,6 +17,7 @@ public class MenuBuffer {
         System.out.println("1. Danh sách món");
         System.out.println("2. Đặt món");
         System.out.println("3. Thêm món vào menu");
+        System.out.println("4. Xóa món khỏi menu");
         int choice = Validate.inputInteger("lựa chọn");
         switch (choice) {
             case 1:
@@ -28,16 +29,12 @@ public class MenuBuffer {
             case 3:
                 Dish dish = inputDish();
                 menuBufferController.add(dish);
+                System.out.println("Thêm mới thành công");
                 break;
             case 4:
-
-                System.out.println("Nhập y hoạc n");
-                String isYes = scanner.nextLine();
-                if (isYes.equalsIgnoreCase("y")) {
-
-                } else {
-
-                }
+                int id = Validate.inputInteger("Id");
+                menuBufferController.remove(id);
+                System.out.println("Xóa thành công");
         }
     }
 

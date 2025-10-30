@@ -13,4 +13,5 @@ public interface IService<T> {
     T findById(int id);
 
     void update(T t);
+    boolean idExist(int id);
 }

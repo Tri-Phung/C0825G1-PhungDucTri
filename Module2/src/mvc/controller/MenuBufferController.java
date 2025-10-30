@@ -22,6 +22,9 @@ public class MenuBufferController {
         iService.save(dish);
     }
 
+    public void remove(int id) {
+        iService.delete(id);
+    }
     public boolean checkDuplicateId(int id) throws IdDuplicatedException {
         return iService.checkDuplicateId(id);
     }

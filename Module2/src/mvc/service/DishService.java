@@ -20,7 +20,11 @@ public class DishService implements IDishService{
 
     @Override
     public void delete(int id) {
-
+        if (!idExist(id)) {
+            System.out.println("Khong ton tai");
+            return;
+        }
+        dishRepository.delete(id);
     }
 
     @Override
@@ -31,6 +35,17 @@ public class DishService implements IDishService{
     @Override
     public void update(Dish dish) {
 
+    }
+
+    @Override
+    public boolean idExist(int id) {
+        List<Dish> dishes = dishRepository.getDishes();
+        for (Dish dish : dishes) {
+            if (dish.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
