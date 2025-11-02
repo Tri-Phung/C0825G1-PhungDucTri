@@ -45,7 +45,7 @@ public class ReadAndDisplayCountry {
 
     static void main() {
         ReadAndDisplayCountry readCountry = new ReadAndDisplayCountry();
-        List<Country> countryList = readCountry.readFile("D:\\codegym\\C0825G1-PhungDucTri\\Module2\\src\\ss16_io_text_file\\bai_tap\\country.csv");
+        List<Country> countryList = readCountry.readFile("src/ss16_io_text_file/bai_tap/country.csv");
         System.out.println("Display countries:");
         readCountry.displayCountries(countryList);
     }
