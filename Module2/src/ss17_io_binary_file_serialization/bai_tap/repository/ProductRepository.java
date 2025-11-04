@@ -45,11 +45,4 @@ public class ProductRepository {
         writeFile(productToAdd);
     }
 
-    public Product findById(int id) {
-        List<Product> products = readFile();
-        for (Product product : products) {
-            if (product.getId() == id) return product;
-        }
-        return null;
-    }
 }

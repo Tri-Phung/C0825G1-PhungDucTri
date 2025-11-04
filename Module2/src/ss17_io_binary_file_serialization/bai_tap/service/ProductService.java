@@ -32,7 +32,13 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(int id) {
-        return productRepository.findById(id);
+        List<Product>  products = productRepository.getListOfProducts();
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -44,5 +50,10 @@ public class ProductService implements IProductService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Product> searchByName(String name) {
+        return productRepository.getListOfProducts().stream().filter(p -> p.getName().toLowerCase().contains(name)).toList();
     }
 }

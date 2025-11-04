@@ -20,6 +20,7 @@ public class MainMenu {
             System.out.println("1.Thêm sản phẩm");
             System.out.println("2.Hiển thị danh sách sản phẩm");
             System.out.println("3.Tìm kiếm thông tin sản phẩm");
+            System.out.println("4. Tìm bằng tên sản phẩm");
             System.out.println("0.Kết thúc");
 
             int choice = Validate.inputInteger("lựa chọn của bạn");
@@ -43,6 +44,17 @@ public class MainMenu {
                     else {
                         products.add(controller.findProductById(id));
                         displayProductList(products);
+                    }
+                    break;
+                case 4:
+                    System.out.print("Nhập vào tên muốn tìm:");
+                    String findName = sc.next();
+                    List<Product> found = controller.findByName(findName);
+                    if (found.isEmpty()) {
+                        System.out.println("Product not found");
+                    } else {
+                        System.out.println("Search result:");
+                        displayProductList(found);
                     }
                     break;
                 case 0:

@@ -24,4 +24,7 @@ public class ProductManagementController {
     public boolean IdCheckDuplicate(int id) throws IdDuplicatedException {
         return iService.checkDuplicateId(id);
     }
+    public List<Product> findByName(String name) {
+        return iService.searchByName(name);
+    }
 }
