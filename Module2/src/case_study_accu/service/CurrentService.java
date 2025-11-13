@@ -28,7 +28,7 @@ public class CurrentService implements ICurrentWeatherService {
                 String locationKey = results.get(0).getAsJsonObject().get("Key").getAsString();
                 return locationKey;
             } else {
-                throw new IOException("Không tìm thấy thành phố" + cityName);
+                throw new IOException("Không tìm thấy thành phố " + cityName);
             }
         }
     }
