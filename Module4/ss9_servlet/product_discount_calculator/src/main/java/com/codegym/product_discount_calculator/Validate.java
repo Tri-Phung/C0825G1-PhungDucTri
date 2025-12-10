@@ -1,6 +1,9 @@
 package com.codegym.product_discount_calculator;
 
 public class Validate {
+    public static boolean inputStringNotEmpty (String input) {
+        return !(input.isEmpty());
+    }
     public static boolean inputDoubleDiscount (String input) {
         double result;
         try {
