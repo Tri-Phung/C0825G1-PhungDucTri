@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-singin {
+    padding: 15px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-singin .logo img {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+}
+
+.form-singin h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+#floatingInput {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#floatingPassword {
+    margin-bottom: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+}
