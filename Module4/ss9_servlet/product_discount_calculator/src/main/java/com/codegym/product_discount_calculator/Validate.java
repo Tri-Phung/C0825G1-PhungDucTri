@@ -20,6 +20,6 @@ public class Validate {
         } catch (NumberFormatException e) {
             return false;
         }
-        return !(result <= 0);
+        return !(result <= 0) && !(result >= Double.MAX_VALUE);
     }
 }
