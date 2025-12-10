@@ -15,8 +15,22 @@ public class DiscountCalculator extends HttpServlet {
         try {
             req.setCharacterEncoding("UTF-8");
             String productDescription = req.getParameter("productDescription");
-            double listPrice = Double.parseDouble(req.getParameter("listPrice"));
-            double discountPercent = Double.parseDouble(req.getParameter("discountPercent"));
+            String inputListPrice = req.getParameter("listPrice");
+            String inputDiscountPercent = req.getParameter("discountPercent");
+            if (!Validate.inputDoublePrice(inputListPrice)) {
+                message = "Price must be a positive number";
+                req.setAttribute("message", message);
+                req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                return;
+            }
+            double listPrice = Double.parseDouble(inputListPrice);
+            if (!Validate.inputDoubleDiscount(inputDiscountPercent)) {
+                message = "Discount must be a positive number between 0 and 100";
+                req.setAttribute("message", message);
+                req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                return;
+            }
+            double discountPercent = Double.parseDouble(inputDiscountPercent);
             double discountAmount = listPrice * discountPercent / 100;
             double discountPrice = listPrice - discountAmount;
             req.setAttribute("productDescription", productDescription);
@@ -31,6 +45,7 @@ public class DiscountCalculator extends HttpServlet {
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
+
     public void destroy() {
     }
 }
