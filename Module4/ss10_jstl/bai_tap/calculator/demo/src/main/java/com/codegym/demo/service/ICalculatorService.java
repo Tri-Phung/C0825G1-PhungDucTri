@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ICalculatorService extends IService<Calculator>{
     Calculator getExpression();
-    Double calculate(Calculator calculator);
+    Double calculate();
 }

@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorRepository {
-    private static final List<Calculator> calculators = new ArrayList<>();
+    private static final Calculator calculator = new Calculator(0.0d,0.0d,"+");
 
-    public static List<Calculator> getCalculator() {
-        return calculators;
+    public Calculator getCalculator() {
+        return calculator;
     }
 
-    public static void saveCalculator(Calculator calculator) {
-        calculators.add(calculator);
+    public void saveCalculator(Calculator expression) {
+        calculator.setNum1(expression.getNum1());
+        calculator.setNum2(expression.getNum2());
+        calculator.setOperation(expression.getOperation());
     }
 }

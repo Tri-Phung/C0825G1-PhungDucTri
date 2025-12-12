@@ -66,23 +66,26 @@
         .btn-calculate:hover {
             background-color: #d0d0d0;
         }
+        .warning {
+            color: red;
+        }
     </style>
 </head>
 <body>
 <h1>Simple Calculator</h1>
 
-<form action="calculate" method="post">
+<form action="calculator" method="post">
     <fieldset>
         <legend>Calculator</legend>
 
         <div class="form-group">
             <label for="firstOperand">First operand:</label>
-            <input type="text" id="firstOperand" name="firstOperand" value="231" />
+            <input type="text" id="firstOperand" name="num1" value="" />
         </div>
 
         <div class="form-group">
             <label for="operator">Operator:</label>
-            <select id="operator" name="operator">
+            <select id="operator" name="operation">
                 <option value="addition">Addition</option>
                 <option value="subtraction">Subtraction</option>
                 <option value="multiplication">Multiplication</option>
@@ -92,11 +95,12 @@
 
         <div class="form-group">
             <label for="secondOperand">Second operand:</label>
-            <input type="text" id="secondOperand" name="secondOperand" value="234" />
+            <input type="text" id="secondOperand" name="num2" value="" />
         </div>
 
         <button type="submit" class="btn-calculate">Calculate</button>
     </fieldset>
+    <p class="warning">${message}</p>
 </form>
 </body>
 </html>
