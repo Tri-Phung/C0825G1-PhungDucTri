@@ -14,8 +14,8 @@
 <body>
 <c:choose>
     <c:when test="${found}">
-        <label>Word: ${word}</label>
-        <label>Result: ${meaning}</label>
+        <label>Word: ${word} =></label>
+        <label>Meaning: ${meaning}</label>
     </c:when>
     <c:otherwise>
         <label>Word not found</label>

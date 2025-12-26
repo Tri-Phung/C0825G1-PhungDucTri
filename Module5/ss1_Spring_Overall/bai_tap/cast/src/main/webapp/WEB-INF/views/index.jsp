@@ -32,28 +32,9 @@
     <label>Rate:</label>
     <input type="text" name="rate" value="26320" readonly> <br>
     <label>USD:</label>
-    <input id="usd" type="text" name="usd" required> <br>
+    <input id="usd" type="text" name="usd"> <br>
     <input type="submit" value="Submit">
 </form>
-<div id="checkModal" class="modal">
-    <h3>Please enter a positive number!</h3>
-    <button onclick="closeModal()">OK</button>
-</div>
-<script>
-    function checkInput() {
-        var usd = document.getElementById("usd").value;
-        if (usd <= 0 || isNaN(usd)) {
-            showModal();
-            return false;
-        }
-    }
-    function showModal() {
-        document.getElementById("checkModal").style.display = "block";
-    }
-    function closeModal() {
-        document.getElementById("checkModal").style.display = "none";
-    }
-</script>
 </body>
 
 </html>
