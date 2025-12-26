@@ -1,4 +1,4 @@
-package com.codegym.demo.entity;
+package com.codegym.timezone.model;
 
 public class Customer {
     private int id;

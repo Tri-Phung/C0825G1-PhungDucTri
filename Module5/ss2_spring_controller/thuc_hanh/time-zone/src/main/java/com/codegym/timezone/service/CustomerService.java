@@ -1,6 +1,6 @@
-package com.codegym.demo.service;
+package com.codegym.timezone.service;
 
-import com.codegym.demo.entity.Customer;
+import com.codegym.timezone.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,5 +28,10 @@ public class CustomerService implements ICustomerService{
     @Override
     public Customer findById(int id) {
         return customers.get(id);
+    }
+
+    @Override
+    public void save(Customer customer) {
+        customers.put(customer.getId(), customer);
     }
 }
