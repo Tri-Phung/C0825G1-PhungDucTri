@@ -30,7 +30,7 @@
 <h1>Convert USD to VND:</h1>
 <form action="/convert" method="post" onsubmit="return checkInput()">
     <label>Rate:</label>
-    <input type="text" name="rate" value="26320" readonly> <br>
+    <label>26290.95</label> <br>
     <label>USD:</label>
     <input id="usd" type="text" name="usd"> <br>
     <input type="submit" value="Submit">
