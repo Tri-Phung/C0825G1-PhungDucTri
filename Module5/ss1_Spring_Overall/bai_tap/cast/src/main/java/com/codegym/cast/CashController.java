@@ -23,8 +23,8 @@ public class CashController {
     @PostMapping("/convert")
     public ModelAndView convert(@RequestParam("usd") double usd) {
         if (usd <= 0) throw new IllegalArgumentException("Usd must be a positive number");
-        double vnd = cashService.convert(usd);
         double rate = 26290.95;
+        double vnd = cashService.convert(usd,rate);
         ModelAndView modelAndView = new ModelAndView("result");
         modelAndView.addObject("rate", rate);
         modelAndView.addObject("usd", usd);
