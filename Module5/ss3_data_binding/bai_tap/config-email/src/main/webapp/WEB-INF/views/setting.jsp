@@ -19,6 +19,8 @@
                         <td>Languages: </td>
                         <td>
                             <form:select path="languages" items="${languagesArray}" />
+                            <br>
+                            <form:errors path="languages" cssClass="error" />
                         </td>
                     </tr>
                     <tr>
@@ -26,7 +28,7 @@
                         <td>Show
                             <form:select path="pageSize" items="${pageSizeArray}" /> emails per page
                             <br>
-                            <form:errors path="pageSize" cssClass="error"/>
+                            <form:errors path="pageSize" cssClass="error" />
                         </td>
                     </tr>
                     <tr>
@@ -34,13 +36,15 @@
                         <td>
                             <form:checkbox path="spamsFilter" value="${spamsFilter}" /> Enable spams filter
                             <br>
-                            <form:errors path="spamsFilter" cssClass="error"/>
+                            <form:errors path="spamsFilter" cssClass="error" />
                         </td>
                     </tr>
                     <tr>
                         <td>Signature: </td>
                         <td>
                             <form:textarea path="signature" value="${signature}" />
+                            <br>
+                            <form:errors path="signature" cssClass="error" />
                         </td>
                     </tr>
                     <tr>
