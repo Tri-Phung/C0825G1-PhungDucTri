@@ -10,12 +10,22 @@ http://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.codegym.TYPE_YOUR_PACKAGE"/>
+    <context:component-scan base-package="com.codegym.customermanagementthymeleaf"/>
 
     <mvc:annotation-driven/>
-
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+<!--      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  -->
+<!--          <property name="prefix" value="/WEB-INF/views/"/>  -->
+<!--          <property name="suffix" value=".jsp"/>  -->
+<!--      </bean>  -->
+<bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
+<property name="templateResolver" ref="templateResolver"/>
+</bean>
+<bean class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
+<property name="templateEngine" ref="templateEngine"/>
+<property name="characterEncoding" value="UTF-8"/>
+</bean>
+<bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
+<property name="prefix" value="/WEB-INF/views/"/>
+<property name="suffix" value=".html"/>
+</bean>
 </beans>
