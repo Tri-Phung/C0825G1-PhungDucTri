@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head}">
+    <title>List product</title>
+</head>
+<body>
+<h1>List product</h1>
+<form th:action="@{/products/search}" method="get">
+    <table>
+        <tr>
+            <th>Name:</th>
+            <th>Min Price:</th>
+            <th>Max Price:</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="text" name="name" placeholder="Search product's name..." th:value="${name}"></td>
+            <td><input type="text" name="minPrice" placeholder="Min price..." th:value="${minPrice}"></td>
+            <td><input type="text" name="maxPrice" placeholder="Max price..." th:value="${maxPrice}"></td>
+            <td><button type="submit">Search</button></td>
+        </tr>
+    </table>
+</form>
+<a th:href="@{/products/add}"><button>Create product</button></a>
+<div class="notify" th:if="${message}">
+    <span th:text="${message}"></span>
+</div>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${products}">
+        <td th:text="${row.id}"></td>
+        <td th:text="${row.name}"></td>
+        <td th:text="${row.price}"></td>
+        <td th:text="${row.quantity}"></td>
+        <td th:text="${row.description}"></td>
+        <td><a th:href="@{/products/{id}/edit(id=${row.id})}"><button>Edit</button></a>
+            <button type="button"
+                    th:attr="data-id=${row.id}, data-name=${row.name}"
+                    onclick="showDeleteModal(this)">
+                Delete
+            </button>
+            <a th:href="@{/products/{id}/detail(id=${row.id})}"><button>Detail</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div id="deleteModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 style="color: #d9534f;">Confirm</h2>
+        <hr>
+        <p>Are you sure to delete the product</p>
+        <h3 id="productNameDisplay" style="color: #333;"></h3>
+        <form th:action="@{/products/delete}" method="post">
+            <input type="hidden" name="id" id="productIdInput">
+            <div class="modal-actions">
+                <button type="submit" class="btn-danger">Delete</button>
+                <button type="button" class="btn-secondary" onclick="hideDeleteModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    function showDeleteModal(button) {
+        const id = button.getAttribute('data-id');
+        const name = button.getAttribute('data-name');
+        document.getElementById('productIdInput').value = id;
+        document.getElementById('productNameDisplay').innerText = name;
+        document.getElementById('deleteModal').style.display = 'block';
+    }
+    function hideDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        const modal = document.getElementById('deleteModal');
+        if (event.target == modal) {
+            hideDeleteModal();
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/layout :: head}">
+    <title>Edit product</title>
+</head>
+
+<body>
+<h1>Edit Product</h1>
+<div id="form">
+    <form th:action="@{/products/update}" method="post" th:object="${product}">
+        <table>
+            <tr>
+                <td>ID:</td>
+                <td th:text="*{id}"></td>
+                <input type="hidden" name="id" th:value="*{id}">
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" name="name" th:field="*{name}">
+                    <span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" name="price" th:field="*{price}">
+                    <span style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td><input type="text" name="quantity" th:field="*{quantity}">
+                    <span style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><textarea name="description" th:field="*{description}"></textarea></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Update</button></td>
+                <td><a href="/products"><button type="button">Cancel</button> </a> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+
+</html>

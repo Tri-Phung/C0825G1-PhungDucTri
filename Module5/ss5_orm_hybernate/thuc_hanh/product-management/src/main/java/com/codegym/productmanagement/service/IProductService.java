@@ -1,0 +1,10 @@
+package com.codegym.productmanagement.service;
+
+import com.codegym.productmanagement.entity.Product;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public interface IProductService extends IService<Product>{
+    List<Product> search(String name, BigDecimal minPrice, BigDecimal maxPrice);
+}
