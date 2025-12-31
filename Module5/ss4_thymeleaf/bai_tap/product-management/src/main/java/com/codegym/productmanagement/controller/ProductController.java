@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String create(Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
+    public String create(@ModelAttribute("product") Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         if(product.getName().isEmpty()){
             bindingResult.rejectValue("name","error.name","Name is required!");
         }
@@ -64,7 +64,7 @@ public class ProductController {
     }
 
     @PostMapping("/update")
-    public String update(Product product, BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model){
+    public String update(@ModelAttribute("product") Product product, BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model){
         if(product.getName().isEmpty()){
             bindingResult.rejectValue("name","error.name","Name is required!");
         }
