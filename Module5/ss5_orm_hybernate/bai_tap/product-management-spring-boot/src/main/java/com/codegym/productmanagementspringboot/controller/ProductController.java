@@ -1,19 +1,12 @@
-package com.codegym.productmanagement.controller;
+package com.codegym.productmanagementspringboot.controller;
 
-import com.codegym.productmanagement.entity.Product;
-import com.codegym.productmanagement.service.ProductService;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.NoResultException;
+import com.codegym.productmanagementspringboot.entity.Product;
+import com.codegym.productmanagementspringboot.service.ProductService;
 import jakarta.validation.Valid;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
@@ -22,8 +15,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
-    private final ProductService productService = new ProductService();
-
+    ProductService productService;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
     @GetMapping("")
     public String index(Model model){
         model.addAttribute("products", productService.findAll());
@@ -38,21 +33,38 @@ public class ProductController {
 
     @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable("id") int id, Model model){
-        model.addAttribute("product", productService.findById(id));
+        Product product = productService.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        model.addAttribute("product", product);
         return "product/edit";
     }
 
     @GetMapping("/{id}/detail")
     public String showDetail(@PathVariable("id") int id, Model model){
-        model.addAttribute("product", productService.findById(id));
+        Product product = productService.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        model.addAttribute("product", product);
         return "product/detail";
     }
 
     @GetMapping("/search")
-    public String search(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "minPrice", required = false) BigDecimal minPrice, @RequestParam(value = "maxPrice", required = false) BigDecimal maxPrice, Model model)
+    public String search(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "minPrice", required = false) String minPrice, @RequestParam(value = "maxPrice", required = false) String maxPrice, Model model)
     {
-        List<Product> products = productService.search(name, minPrice, maxPrice);
-        model.addAttribute("products", products);
+        BigDecimal min = null;
+        BigDecimal max = null;
+        String errorMessage = "";
+        try {
+            if (minPrice != null && !minPrice.isEmpty()) min = new BigDecimal(minPrice);
+            if (maxPrice != null && !maxPrice.isEmpty()) max = new BigDecimal(maxPrice);
+        } catch (NumberFormatException e) {
+            errorMessage = "Price should be a number!";
+        }
+        if (!errorMessage.isEmpty()) {
+            model.addAttribute("products", productService.findAll());
+            model.addAttribute("message", errorMessage);
+        }
+        else {
+            List<Product> products = productService.search(name, min, max);
+            model.addAttribute("products", products);
+        }
         model.addAttribute("name", name);
         model.addAttribute("minPrice", minPrice);
         model.addAttribute("maxPrice", maxPrice);
@@ -80,7 +92,7 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             return "product/edit";
         }
-        productService.update(product);
+        productService.save(product);
         redirectAttributes.addFlashAttribute("message", "Product updated successfully.");
         return "redirect:/products";
     }
