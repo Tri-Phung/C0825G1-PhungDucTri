@@ -21,6 +21,9 @@
         </tr>
     </table>
 </form>
+<div th:if="${errorMessage}">
+    <span th:text="${errorMessage}"></span>
+</div>
 <a th:href="@{/products/add}"><button>Create product</button></a>
 <div class="notify" th:if="${message}">
     <span th:text="${message}"></span>
@@ -55,38 +58,7 @@
     </tr>
     </tbody>
 </table>
-<div id="deleteModal" class="modal-overlay">
-    <div class="modal-content">
-        <h2 style="color: #d9534f;">Confirm</h2>
-        <hr>
-        <p>Are you sure to delete the product</p>
-        <h3 id="productNameDisplay" style="color: #333;"></h3>
-        <form th:action="@{/products/delete}" method="post">
-            <input type="hidden" name="id" id="productIdInput">
-            <div class="modal-actions">
-                <button type="submit" class="btn-danger">Delete</button>
-                <button type="button" class="btn-secondary" onclick="hideDeleteModal()">Cancel</button>
-            </div>
-        </form>
-    </div>
-</div>
+<div th:replace="~{common/layout :: delete-modal}"></div>
 </body>
-<script>
-    function showDeleteModal(button) {
-        const id = button.getAttribute('data-id');
-        const name = button.getAttribute('data-name');
-        document.getElementById('productIdInput').value = id;
-        document.getElementById('productNameDisplay').innerText = name;
-        document.getElementById('deleteModal').style.display = 'block';
-    }
-    function hideDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-        const modal = document.getElementById('deleteModal');
-        if (event.target == modal) {
-            hideDeleteModal();
-        }
-    }
-</script>
+<script th:replace="~{common/layout :: scripts}"></script>
 </html>
