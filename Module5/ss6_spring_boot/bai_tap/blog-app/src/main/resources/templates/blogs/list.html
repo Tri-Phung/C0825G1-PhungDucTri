@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head}">
+    <title>List Blogs</title>
+</head>
+<body>
+<div th:replace="~{common/layout :: navbar}"></div>
+<main class="container">
+    <h1>List Blogs</h1>
+    <div th:if="${#lists.isEmpty(blogs)}">No blogs found.</div>
+    <div th:replace="~{common/layout :: toast}"></div>
+    <div th:each="blog : ${blogs}" class="blog-card">
+        <h3>
+            <a th:href="@{/blogs/{id}/detail(id=${blog.id})}"
+               th:text="'[#' + ${blog.id} + '] - ' + ${blog.title}"></a>
+        </h3>
+        <p>Posted by: <span th:text="${blog.author}"></span></p>
+        <p>Created At: <span th:text="${#temporals.format(blog.createdAt,'dd/MM/yyyy HH:mm')}"></span></p>
+        <p th:if="${blog.updatedAt != null}">Update At: <span th:text="${#temporals.format(blog.updatedAt,'dd/MM/yyyy HH:mm')}"></span></p>
+        <p th:text="${blog.summary}"></p>
+    </div>
+</main>
+<div th:replace="~{common/layout :: footer}"></div>
+</body>
+</html>

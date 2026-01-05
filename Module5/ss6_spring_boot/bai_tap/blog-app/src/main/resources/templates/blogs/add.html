@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head}">
+    <title>List Blogs</title>
+</head>
+<body>
+<div th:replace="~{common/layout :: navbar}"></div>
+<main class="container">
+    <h1>Add Blog</h1>
+    <form th:action="@{/blogs/add}" method="post" th:object="${blog}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title">
+            <span style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+        </div>
+        <div class="mb-3">
+            <label for="summary" class="form-label">Summary</label>
+            <input type="text" class="form-control" id="summary" name="summary">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+            <span style="color:red" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" name="author">
+            <span style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Publish</button>
+        <a class="btn btn-secondary" th:href="@{/blogs}">Cancel</a>
+    </form>
+</main>
+<div th:replace="~{common/layout :: footer}"></div>
+</body>
+</html>

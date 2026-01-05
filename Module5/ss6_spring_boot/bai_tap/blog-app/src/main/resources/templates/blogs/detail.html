@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head}">
+    <title>List Blogs</title>
+</head>
+<body>
+<div th:replace="~{common/layout :: navbar}"></div>
+<main class="container">
+    <div th:replace="~{common/layout :: toast}"></div>
+    <h1 th:text="${blog.title}"></h1>
+    <p>Author: <span th:text="${blog.author}"></span>
+        | Created At: <span th:text="${#temporals.format(blog.createdAt,'dd/MM/yyyy HH:mm')}"></span>
+        <span th:if="${blog.updatedAt != null}">
+            | Updated: <span th:text="${#temporals.format(blog.updatedAt, 'dd/MM/yyyy HH:mm')}"></span>
+        </span>
+    </p>
+    <br>
+    <p th:text="${blog.content}"></p>
+    <a class="btn btn-primary" th:href="@{/blogs/{id}/edit(id=${blog.id})}">Edit</a>
+    <a class="btn btn-danger" th:onclick="showDeleteModal([[${blog.id}]], [[${blog.title}]], '/blogs/delete')">Delete</a>
+    <a class="btn btn-secondary" th:href="@{/blogs}">Back</a>
+    <div th:replace="~{common/layout :: delete-modal}"></div>
+</main>
+<div th:replace="~{common/layout :: footer}"></div>
+</body>
+<script th:replace="~{common/layout :: scripts}"></script>
+</html>
