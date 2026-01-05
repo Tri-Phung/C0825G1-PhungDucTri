@@ -13,7 +13,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler({
             BindException.class,
             MethodArgumentNotValidException.class,

@@ -72,10 +72,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String create(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
-        if(product.getQuantity() != null && product.getQuantity().toString().contains(".")) {
-            bindingResult.rejectValue("quantity", "error.quantity", "Quantity should be an integer!");
-        }
+    public String create(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
             return "product/add";
         }
@@ -85,10 +82,7 @@ public class ProductController {
     }
 
     @PostMapping("/update")
-    public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model){
-        if(product.getQuantity() != null && product.getQuantity().toString().contains(".")) {
-            bindingResult.rejectValue("quantity", "error.quantity", "Quantity should be an integer!");
-        }
+    public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
             return "product/edit";
         }
