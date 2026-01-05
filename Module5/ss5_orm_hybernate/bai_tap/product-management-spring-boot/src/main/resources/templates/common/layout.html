@@ -105,15 +105,18 @@
     </style>
 </head>
 <body>
-<div th:fragment="delete-modal">
+<div th:fragment="delete-modal(entityName, deleteUrl)">
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-content">
             <h2 style="color: #d9534f;">Confirm</h2>
             <hr>
-            <p>Are you sure to delete the product</p>
+            <p>Are you sure to delete the <span th:text="${entityName}"></span></p>
             <h3 id="productNameDisplay" style="color: #333;"></h3>
-            <form th:action="@{/products/delete}" method="post">
+            <form th:action="${deleteUrl}" method="post">
                 <input type="hidden" name="id" id="productIdInput">
+                <input type="hidden" name="name" id="searchNameInput">
+                <input type="hidden" name="minPrice" id="searchMinPriceInput">
+                <input type="hidden" name="maxPrice" id="searchMaxPriceInput">
                 <div class="modal-actions">
                     <button type="submit" class="btn-danger">Delete</button>
                     <button type="button" class="btn-secondary" onclick="hideDeleteModal()">Cancel</button>
@@ -130,6 +133,10 @@
             const name = button.getAttribute('data-name');
             document.getElementById('productIdInput').value = id;
             document.getElementById('productNameDisplay').innerText = name;
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('searchNameInput').value = urlParams.get('name') || '';
+            document.getElementById('searchMinPriceInput').value = urlParams.get('minPrice') || '';
+            document.getElementById('searchMaxPriceInput').value = urlParams.get('maxPrice') || '';
             document.getElementById('deleteModal').style.display = 'block';
         }
         function hideDeleteModal() {

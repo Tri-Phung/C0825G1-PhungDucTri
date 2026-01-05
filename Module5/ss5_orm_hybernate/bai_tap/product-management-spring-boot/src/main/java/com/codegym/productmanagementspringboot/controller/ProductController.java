@@ -91,9 +91,24 @@ public class ProductController {
         return "redirect:/products";
     }
     @PostMapping("/delete")
-    public String delete(@RequestParam("id") int id, RedirectAttributes redirectAttributes){
+    public String delete(@RequestParam("id") int id,
+                         @RequestParam(value = "name", required = false) String name,
+                         @RequestParam(value = "minPrice", required = false) String minPrice,
+                         @RequestParam(value = "maxPrice", required = false) String maxPrice,
+                         RedirectAttributes redirectAttributes){
         productService.delete(id);
         redirectAttributes.addFlashAttribute("message", "Product deleted successfully.");
+        if ((name != null && !name.isEmpty()) ||
+                (minPrice != null && !minPrice.isEmpty()) ||
+                (maxPrice != null && !maxPrice.isEmpty())) {
+
+            String redirectUrl = "/products/search?";
+            if (name != null && !name.isEmpty()) redirectUrl += "name=" + name + "&";
+            if (minPrice != null && !minPrice.isEmpty()) redirectUrl += "minPrice=" + minPrice + "&";
+            if (maxPrice != null && !maxPrice.isEmpty()) redirectUrl += "maxPrice=" + maxPrice;
+
+            return "redirect:" + redirectUrl;
+        }
         return "redirect:/products";
     }
 }
