@@ -33,6 +33,9 @@ public class Blog {
     private LocalDateTime createdAt;
     @Column(name = "update_at")
     private LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @PrePersist
     public void prePersist() {

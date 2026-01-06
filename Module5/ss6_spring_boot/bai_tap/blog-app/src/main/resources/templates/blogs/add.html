@@ -27,6 +27,12 @@
             <input type="text" class="form-control" id="author" name="author">
             <span style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" th:field="*{category.id}">
+                <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Publish</button>
         <a class="btn btn-secondary" th:href="@{/blogs}">Cancel</a>
     </form>

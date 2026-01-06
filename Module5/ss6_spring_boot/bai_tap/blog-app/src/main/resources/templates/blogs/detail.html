@@ -8,12 +8,13 @@
 <main class="container">
     <div th:replace="~{common/layout :: toast}"></div>
     <h1 th:text="${blog.title}"></h1>
-    <p>Author: <span th:text="${blog.author}"></span>
+    <h5>Author: <span th:text="${blog.author}"></span>
         | Created At: <span th:text="${#temporals.format(blog.createdAt,'dd/MM/yyyy HH:mm')}"></span>
         <span th:if="${blog.updatedAt != null}">
             | Updated: <span th:text="${#temporals.format(blog.updatedAt, 'dd/MM/yyyy HH:mm')}"></span>
         </span>
-    </p>
+        | Category: <span th:text="${blog.category.name}"></span>
+    </h5>
     <br>
     <p th:text="${blog.content}"></p>
     <a class="btn btn-primary" th:href="@{/blogs/{id}/edit(id=${blog.id})}">Edit</a>

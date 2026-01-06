@@ -9,6 +9,23 @@
     <h1>List Blogs</h1>
     <div th:if="${#lists.isEmpty(blogs)}">No blogs found.</div>
     <div th:replace="~{common/layout :: toast}"></div>
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form th:action="@{/blogs}" method="get" class="d-flex gap-2">
+                <input type="text" name="keyword" class="form-control" placeholder="Search by title..." th:value="${keyword}">
+                <select name="categoryId" class="form-select" style="width: 200px;">
+                    <option value="">All Categories</option>
+                    <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}" th:selected="${cat.id == categoryId}"></option>
+                </select>
+                <select name="sortDir" class="form-select" style="width: 150px;">
+                    <option value="desc" th:selected="${sortDir == 'desc'}">Newest</option>
+                    <option value="asc" th:selected="${sortDir == 'asc'}">Oldest</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a th:href="@{/blogs}" class="btn btn-secondary">Reset</a>
+            </form>
+        </div>
+    </div>
     <div th:each="blog : ${blogs}" class="blog-card">
         <h3>
             <a th:href="@{/blogs/{id}/detail(id=${blog.id})}"
@@ -19,6 +36,16 @@
         <p th:if="${blog.updatedAt != null}">Update At: <span th:text="${#temporals.format(blog.updatedAt,'dd/MM/yyyy HH:mm')}"></span></p>
         <p th:text="${blog.summary}"></p>
     </div>
+    <nav th:if="${blogs.totalPages > 1}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${blogs.first} ? 'disabled'">
+                <a class="page-link" th:href="@{/blogs(page=${blogs.number - 1}, keyword=${keyword}, categoryId=${categoryId}, sortDir=${sortDir})}"><<</a>
+            </li>
+            <li class="page-item" th:classappend="${blogs.last} ? 'disabled'">
+                <a class="page-link" th:href="@{/blogs(page=${blogs.number + 1}, keyword=${keyword}, categoryId=${categoryId}, sortDir=${sortDir})}">>></a>
+            </li>
+        </ul>
+    </nav>
 </main>
 <div th:replace="~{common/layout :: footer}"></div>
 </body>

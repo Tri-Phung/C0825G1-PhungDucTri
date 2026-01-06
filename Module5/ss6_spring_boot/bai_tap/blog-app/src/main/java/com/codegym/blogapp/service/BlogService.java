@@ -2,6 +2,8 @@ package com.codegym.blogapp.service;
 
 import com.codegym.blogapp.entity.Blog;
 import com.codegym.blogapp.repository.BlogRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +37,20 @@ public class BlogService implements IBlogService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Page<Blog> findAll(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Blog> findByCategoryId(Long categoryId, Pageable pageable) {
+        return blogRepository.findByCategoryId(categoryId, pageable);
+    }
+
+    @Override
+    public Page<Blog> search(String keyword, Long categoryId,Pageable pageable) {
+        return blogRepository.search(keyword, categoryId, pageable);
     }
 }
