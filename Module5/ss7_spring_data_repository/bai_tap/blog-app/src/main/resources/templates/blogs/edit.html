@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head}">
+    <title>List Blogs</title>
+</head>
+<body>
+<div th:replace="~{common/layout :: navbar}"></div>
+<main class="container">
+    <h1>Edit Blog</h1>
+    <form th:action="@{/blogs/edit(id=${blog.id})}" method="post">
+        <input type="hidden" th:field="*{blog.id}">
+        <input type="hidden" th:field="*{blog.createdAt}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="${blog.title}">
+        </div>
+        <div class="mb-3">
+            <label for="summary" class="form-label">Summary</label>
+            <input type="text" class="form-control" id="summary" name="summary" th:value="${blog.summary}">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="3" th:text="${blog.content}"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" name="author" th:value="${blog.author}">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-secondary" th:href="@{/blogs/{id}/detail(id=${blog.id})}">Cancel</a>
+    </form>
+</main>
+<div th:replace="~{common/layout :: footer}"></div>
+</body>
+</html>
