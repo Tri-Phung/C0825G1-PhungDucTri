@@ -2,7 +2,6 @@ package com.codegym.blogapp.service;
 
 import com.codegym.blogapp.entity.Blog;
 import com.codegym.blogapp.repository.BlogRepository;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.NoResultException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +23,7 @@ public class BlogService implements IBlogService{
 
     @Override
     public Blog findById(Long id) {
-        return blogRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No blog found with id: " + id));
+        return blogRepository.findById(id).orElseThrow(() -> new NoResultException("No blog found with id: " + id));
     }
 
     @Override
