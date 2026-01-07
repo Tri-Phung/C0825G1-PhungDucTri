@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('Form Bài Hát')}"></head>
+<body>
+<header th:replace="~{common/layout :: header}"></header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 th:text="${song.id == null} ? 'Thêm Bài Hát' : 'Cập Nhật Bài Hát'"></h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="${song.id == null} ? @{/songs/create} : @{/songs/edit/{id}(id=${song.id})}"
+                          th:object="${song}" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Tên bài hát</label>
+                            <input type="text" th:field="*{songName}" class="form-control"
+                                   th:classappend="${#fields.hasErrors('songName')} ? 'is-invalid'">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('songName')}"
+                                 th:errors="*{songName}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nghệ sĩ</label>
+                            <input type="text" th:field="*{artist}" class="form-control"
+                                   th:classappend="${#fields.hasErrors('artist')} ? 'is-invalid'">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('artist')}"
+                                 th:errors="*{artist}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Thể loại</label>
+                            <input type="text" th:field="*{genre}" class="form-control"
+                                   th:classappend="${#fields.hasErrors('genre')} ? 'is-invalid'"
+                                   placeholder="VD: Pop, Rock, Ballad">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('genre')}"
+                                 th:errors="*{genre}"></div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a th:href="@{/songs}" class="btn btn-secondary">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{common/layout :: footer}"></footer>
+</body>
+</html>
