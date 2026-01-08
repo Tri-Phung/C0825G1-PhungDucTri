@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('Chi tiết sách')}"></head>
+<body>
+<header th:replace="~{common/layout :: header}"></header>
+
+<div class="container">
+    <div class="card" style="max-width: 400px;">
+        <div class="card-header bg-info text-white" th:text="${book.title}">Tên sách</div>
+        <div class="card-body">
+            <p><b>Tác giả:</b> <span th:text="${book.author}"></span></p>
+            <p><b>Còn lại:</b> <span th:text="${book.quantity}"></span></p>
+
+            <form th:action="@{/books/{id}/borrow(id=${book.id})}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-success btn-sm">Mượn sách</button>
+            </form>
+            <a th:href="@{/books}" class="btn btn-secondary btn-sm">Quay lại</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

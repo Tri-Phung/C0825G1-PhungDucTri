@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('Mượn thành công')}"></head>
+<body>
+<header th:replace="~{common/layout :: header}"></header>
+
+<div class="container text-center">
+    <div class="card" style="max-width: 400px; margin: auto;">
+        <div class="card-body">
+            <h5 class="text-success">✅ Mượn sách thành công!</h5>
+            <p>Mã mượn của bạn:</p>
+            <h2 class="text-primary" th:text="${borrowCode}"></h2>
+            <a th:href="@{/books}" class="btn btn-primary btn-sm mt-2">Về danh sách</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
