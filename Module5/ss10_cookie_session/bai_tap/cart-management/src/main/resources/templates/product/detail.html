@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{common/layout :: layout(~{::content})}">
+<body>
+<div th:fragment="content">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/products}">Trang chủ</a></li>
+      <li class="breadcrumb-item active" th:text="${product.name}">Sản phẩm</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <!-- Ảnh sản phẩm -->
+    <div class="col-md-5">
+      <img th:src="${product.imageUrl}"
+           class="img-fluid rounded shadow"
+           alt="Product Image">
+    </div>
+
+    <!-- Thông tin sản phẩm -->
+    <div class="col-md-7">
+      <h2 th:text="${product.name}">Tên sản phẩm</h2>
+
+      <table class="table table-borderless">
+        <tr>
+          <td class="text-muted" style="width: 120px;">Mã SP:</td>
+          <td><strong th:text="${product.code}">SP001</strong></td>
+        </tr>
+        <tr>
+          <td class="text-muted">Giá:</td>
+          <td>
+                            <span class="text-danger fs-4 fw-bold"
+                                  th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+                            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-muted">Tồn kho:</td>
+          <td>
+                            <span th:if="${product.stock > 0}"
+                                  th:text="'Còn ' + ${product.stock} + ' sản phẩm'"
+                                  class="text-success">
+                            </span>
+            <span th:if="${product.stock <= 0}" class="text-danger">Hết hàng</span>
+          </td>
+        </tr>
+      </table>
+
+      <p class="text-muted" th:text="${product.description}">Mô tả sản phẩm</p>
+
+      <div class="d-flex gap-2 mt-4" th:if="${product.stock > 0}">
+        <!-- Nút Mua ngay -->
+        <form th:action="@{/products/{id}/buy-now(id=${product.id})}" method="post">
+          <button type="submit" class="btn btn-warning btn-lg">
+            <i class="bi bi-lightning-fill"></i> Mua ngay
+          </button>
+        </form>
+
+        <!-- Nút Thêm vào giỏ -->
+        <form th:action="@{/cart/add/{id}(id=${product.id})}" method="post">
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+          </button>
+        </form>
+      </div>
+
+      <div th:if="${product.stock <= 0}" class="mt-4">
+        <button class="btn btn-secondary btn-lg" disabled>
+          <i class="bi bi-x-circle"></i> Hết hàng
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

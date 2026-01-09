@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{common/layout :: layout(~{::content})}">
+<body>
+<div th:fragment="content">
+    <!-- Breadcrumb Steps -->
+    <div class="d-flex justify-content-center mb-4">
+        <div class="d-flex align-items-center">
+            <span class="badge bg-success rounded-pill px-3 py-2">✓ 01. Giỏ hàng</span>
+            <span class="mx-2 text-muted">→</span>
+            <span class="badge bg-primary rounded-pill px-3 py-2">02. Đơn hàng</span>
+            <span class="mx-2 text-muted">→</span>
+            <span class="badge bg-secondary rounded-pill px-3 py-2">03. Thanh toán</span>
+        </div>
+    </div>
+
+    <h3 class="mb-4"><i class="bi bi-receipt"></i> XÁC NHẬN ĐƠN HÀNG</h3>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Chi tiết đơn hàng</strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:each="item : ${cartItems}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img th:src="${item.imageUrl}"
+                                     alt="Product"
+                                     style="width: 50px; height: 50px; object-fit: cover;"
+                                     class="rounded me-3">
+                                <div>
+                                    <strong th:text="${item.productName}">Sản phẩm</strong>
+                                    <br>
+                                    <small class="text-muted" th:text="'x' + ${item.quantity}">x1</small>
+                                </div>
+                            </div>
+                            <span th:text="${#numbers.formatDecimal(item.subTotal, 0, 'COMMA', 0, 'POINT')} + ' đ'"
+                                  class="text-danger">
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Tổng thanh toán</h5>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Tạm tính:</span>
+                        <span th:text="${#numbers.formatDecimal(totalPrice, 0, 'COMMA', 0, 'POINT')} + ' đ'"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Phí vận chuyển:</span>
+                        <span class="text-success">Miễn phí</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <strong>Tổng cộng:</strong>
+                        <strong class="text-danger fs-5"
+                                th:text="${#numbers.formatDecimal(totalPrice, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+                        </strong>
+                    </div>
+
+                    <form th:action="@{/cart/checkout}" method="post" class="mt-4">
+                        <button type="submit" class="btn btn-success btn-lg w-100">
+                            <i class="bi bi-check-circle"></i> Xác nhận thanh toán
+                        </button>
+                    </form>
+
+                    <a th:href="@{/cart}" class="btn btn-outline-secondary w-100 mt-2">
+                        <i class="bi bi-arrow-left"></i> Quay lại giỏ hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
