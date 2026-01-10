@@ -2,6 +2,7 @@ package com.codegym.blogapp.service;
 
 import com.codegym.blogapp.entity.Blog;
 import com.codegym.blogapp.repository.BlogRepository;
+import jakarta.persistence.NoResultException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class BlogService implements IBlogService{
 
     @Override
     public Blog findById(Long id) {
-        return blogRepository.findById(id).orElse(null);
+        return blogRepository.findById(id).orElseThrow(() -> new NoResultException("Blog not found!"));
     }
 
     @Override
