@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest stable version (e.g., 3.7.1 as of this time) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<form id="add-smartphone">
+    <h1>Create new Smartphone</h1>
+    <label for="producer">Producer: </label>
+    <input type="text" id="producer" placeholder="e.g. Apple">
+    <label for="model">Model: </label>
+    <input type="text" id="model" placeholder="e.g. iPhone 15">
+    <label for="price">Price: </label>
+    <input type="number" id="price" placeholder="e.g. 999">
+    <input type="submit" value="Add" onclick="addNewSmartphone()">
+</form>
+<script src="index.js"></script>
+</body>
+</html>
