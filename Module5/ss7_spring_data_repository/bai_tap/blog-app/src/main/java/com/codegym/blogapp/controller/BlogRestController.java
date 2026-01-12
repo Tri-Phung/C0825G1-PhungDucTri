@@ -41,14 +41,14 @@ public class BlogRestController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "desc") String sortDir) {
-        
+
         Sort sort = sortDir.equalsIgnoreCase("asc")
                 ? Sort.by("createdAt").ascending()
                 : Sort.by("createdAt").descending();
         Pageable pageable = PageRequest.of(page, size, sort);
-        
+
         Page<Blog> blogs = blogService.findAll(pageable);
-        if(blogs.hasContent()){
+        if (blogs.hasContent()) {
             Page<BlogListDTO> blogDTOs = blogs.map(BlogListDTO::new);
             return new ResponseEntity<>(blogDTOs, HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -57,7 +57,7 @@ public class BlogRestController {
     @GetMapping("/{id}")
     public ResponseEntity<BlogDetailDTO> getBlogById(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
-        if(blog != null){
+        if (blog != null) {
             return new ResponseEntity<>(new BlogDetailDTO(blog), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -70,6 +70,16 @@ public class BlogRestController {
         blog.setCategory(category);
         blogService.save(blog);
         return new ResponseEntity<>(new BlogDetailDTO(blog), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> search(@RequestParam(defaultValue = "") String keyword,
+                                    @RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        Page<Blog> blogs = blogService.search(keyword, null, pageable);
+        Page<BlogListDTO> blogDTOs = blogs.map(BlogListDTO::new);
+        return new ResponseEntity<>(blogDTOs, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

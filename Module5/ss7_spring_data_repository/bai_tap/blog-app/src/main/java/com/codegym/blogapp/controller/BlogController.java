@@ -85,4 +85,8 @@ public class BlogController {
         redirectAttributes.addFlashAttribute("message", "Blog has been deleted successfully.");
         return "redirect:/blogs";
     }
+    @GetMapping("/ajax")
+    public String showAjaxPage(){
+        return "blogs/ajax";
+    }
 }
