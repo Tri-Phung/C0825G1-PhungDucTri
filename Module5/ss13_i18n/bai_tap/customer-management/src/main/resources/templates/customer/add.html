@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/layout :: head}">
+</head>
+
+<body>
+    <div class="container main-container">
+        <h1 th:text="#{customer.form.add.title}">Add New Customer</h1>
+        <form th:action="@{/customers/add}" th:object="${customer}" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label" th:text="#{customer.form.name}">Name</label>
+                <input type="text" th:field="*{name}" class="form-control" id="name">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label" th:text="#{customer.form.email}">Email</label>
+                <input type="email" th:field="*{email}" class="form-control" id="email">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label" th:text="#{customer.form.phone}">Phone</label>
+                <input type="text" th:field="*{phone}" class="form-control" id="phone">
+                <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></div>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label" th:text="#{customer.form.address}">Address</label>
+                <input type="text" th:field="*{address}" class="form-control" id="address">
+                <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" th:text="#{customer.form.save}">Save Changes</button>
+                <a th:href="@{/customers}" class="btn btn-secondary ms-2" th:text="#{customer.form.cancel}">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <div th:replace="~{common/layout :: scripts}"></div>
+</body>
+
+</html>
