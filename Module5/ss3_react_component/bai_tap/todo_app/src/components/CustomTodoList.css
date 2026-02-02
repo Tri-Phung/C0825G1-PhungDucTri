@@ -1,0 +1,4 @@
+.customTodoList_li:hover {
+    background-color: gray !important;
+    color: white !important;
+}
