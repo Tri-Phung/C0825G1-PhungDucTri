@@ -1,0 +1,49 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Đắc nhân tâm",
+      "quantity": 100
+    },
+    {
+      "id": 2,
+      "title": "Tony buổi sáng",
+      "quantity": 100
+    },
+    {
+      "id": 3,
+      "title": "book number three",
+      "quantity": 120
+    },
+    {
+      "id": 4,
+      "title": "sách hay",
+      "quantity": 123
+    },
+    {
+      "id": 5,
+      "title": "truyện ma vi en",
+      "quantity": 123
+    },
+    {
+      "id": 6,
+      "title": "sách mới",
+      "quantity": 123
+    },
+    {
+      "id": 8,
+      "title": "tiếng anh 12",
+      "quantity": 111
+    },
+    {
+      "title": "sách toán 12",
+      "quantity": 40,
+      "id": 10
+    },
+    {
+      "title": "sách hóa 12",
+      "quantity": 100,
+      "id": 11
+    }
+  ]
+}
